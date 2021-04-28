@@ -6,7 +6,6 @@ from django.db import models
 # create person variables
 class Person(models.Model):
     firstname = models.CharField(blank=False, max_length=60)
-    lastname = models.CharField(blank=False, max_length=60)
     dob = models.DateField(null=True)
     age = models.IntegerField(null=True)
     gender_options = [
