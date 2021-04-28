@@ -99,8 +99,24 @@ now = datetime.datetime.now().strftime('%H:%M:%S')  #  Time formatted like '23:1
 python manage.py runserver
 
 # visited http://localhost:8000/welcome/ and got the right message. Hooray!
-
-
-
-
-
+firstnames = ['Zeno', 'Rice']
+lastnames = ['Kramer', 'Kramer']
+dobs = ['2017-03-17', '2018-04-18']
+ages = [4, 3]
+genders = ['F','F']
+   for lastname in lastnames:
+        person, created = Person.objects.get_or_create(lastname=lastname)
+        if created:
+            print(f"Created an entry for {lastname}")
+    for dob in dobs:
+        person, created = Person.objects.get_or_create(dob=dob)
+        if created:
+            print(f"Created an entry for {dob}")
+    for age in ages:
+        person, created = Person.objects.get_or_create(age=age)
+        if created:
+            print(f"Created an entry for {age}")
+    for gender in genders:
+        person, created = Person.objects.get_or_create(gender=gender)
+        if created:
+            print(f'Created an entry for {gender}')
