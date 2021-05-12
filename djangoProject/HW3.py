@@ -41,7 +41,7 @@ python manage.py runserver
 
 # visited http://localhost:8000/polls/ and got the right message. Hooray!
 
-# go to proj/settings.py, set the time zone to PDT (UTC-07:00), and create the tables in the database
+# go to proj/settings.py, set the time zone to America/Los_Angeles, and create the tables in the database
 python manage.py migrate
 
 # stopped before the creating models section

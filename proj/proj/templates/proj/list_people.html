@@ -1,0 +1,23 @@
+{% extends 'proj/base.html' %}
+
+{% block body_content %}
+    <div class="container-fluid">
+        <div class="row h-100">
+            <div class="col align-self-center">
+                <div class="row justify-content-center">
+                    <div class="col-auto"><h1> project users</h1></div>
+                </div>
+
+                <div class="row justify-content-center">
+                    <div class="col-sm-6">
+                        <ul class="list-group">
+                            {% for person in people %}
+                                <li class="list-group-item">{{person.FirstName}}, born on {{ person.DOB }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{%  endblock %}

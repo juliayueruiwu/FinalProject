@@ -3,19 +3,23 @@
 # (5 pts) Define a method that will populate the database table(s) for one or more of your models with some number of
 # specific instances/entries Define a second method that performs each of the following
 
-# run the python manage.py shell
+# run the "python manage.py shell"
 
 from polls.models import Person, Behavior, Observation
+
+# inspect Behavior options
+Behavior.trial1_options
 
 import random
 # firstnames of created users
 def create_users():
-    firstnames = ['Zeno', 'Rice']
-    for firstname in firstnames:
-        person, created = Person.objects.get_or_create(firstname=firstname)
+    FirstNames = ['Zeno', 'Rice']
+    for FirstName in FirstNames:
+        person, created = Person.objects.get_or_create(FirstName=FirstName)
 
         if created:
-            print(f"Created an entry for {firstname}")
+            print(f"Created an entry for {FirstName}")
+
 
 def create_behaviors():
     for behavior in Behavior.trial1_options:
@@ -23,6 +27,7 @@ def create_behaviors():
 
         if created:
             print(f"Created an entry for {behavior[1]}")
+
 
 def create_observations():
     num_observations = 20
@@ -47,7 +52,9 @@ Observation.objects.count()
 observations = Observation.objects.all()
 observations.values_list('player1')
 # list firstnames of my player1
-observations.values_list('player1__firstname')
+observations.values_list('player1__FirstName')
 # Filter based on some criteria
-observations.filter(player1__firstname='Rice')
+observations.filter(player1__FirstName='Rice')
+
+# Important: to delete created data, use .delete(); for example, observations.delete() deletes all observations.
 
