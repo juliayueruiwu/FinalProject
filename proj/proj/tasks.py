@@ -5,7 +5,7 @@
 
 # run the "python manage.py shell"
 
-from polls.models import Person, Behavior, Observation
+from proj.models import Person, Behavior, Observation1
 
 # inspect Behavior options
 Behavior.trial1_options

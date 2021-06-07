@@ -26,9 +26,10 @@ from django.forms import ModelForm, modelformset_factory
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
 
-from polls.models import Person, Observation
+from proj.models import Person, Practice, Round
 from django.core.exceptions import ValidationError
 
+# define person form
 class PersonForm(ModelForm):
     class Meta:
         model = Person
@@ -42,34 +43,174 @@ class PersonForm(ModelForm):
         self.helper.form_method = 'post'
         self.helper.add_input(Submit('submit', 'Submit'))
 
-class ObservationForm(ModelForm):
+# define practice round 1 form
+class Practice1Form(ModelForm):
     class Meta:
-        model = Observation
+        model = Practice
         fields = '__all__'
 
     def __init__(self, *args, **kwargs):
-        super(ObservationForm, self).__init__(*args, **kwargs)
+        super(Practice1Form, self).__init__(*args, **kwargs)
+        self.fields['answer'].label = ''
 
         # Crispy forms stuff
         self.helper = FormHelper()
         self.helper.form_method = 'post'
         self.helper.add_input(Submit('submit', 'Submit'))
 
+    # Validation: Make sure that choice 2 is picked
     def clean(self):
         cleaned_data = super().clean()
 
-        # Make sure that the player 1 and player 2 names aren't the same
-        player1 = cleaned_data.get("player1")
-        player2 = cleaned_data.get("player2")
-
-        if player1 == player2:
-            # Add error on player 2 field
-            self.add_error('player2', 'Player 2 cannot match Player 1')
-
-            # Raises error on entire form
+        practice = cleaned_data.get("answer")
+        if practice == 1 or 3 or 4:
             raise ValidationError(
-                "Player 1 and Player 2 individuals cannot be the same"
+                "Oops! That is not the right answer! Please try again. Click 'Instructions' to view rules again."
             )
 
+# define practice round 2 form
+class Practice2Form(ModelForm):
+    class Meta:
+        model = Practice
+        fields = '__all__'
 
-ObservationModelFormSet = modelformset_factory(Observation, form=ObservationForm, extra=0, max_num=1)
+    def __init__(self, *args, **kwargs):
+        super(Practice2Form, self).__init__(*args, **kwargs)
+        self.fields['answer'].label = ''
+
+        # Crispy forms stuff
+        self.helper = FormHelper()
+        self.helper.form_method = 'post'
+        self.helper.add_input(Submit('submit', 'Submit'))
+
+    # Validation: Make sure that choice 1 is picked
+    def clean(self):
+        cleaned_data = super().clean()
+
+        practice = cleaned_data.get("answer")
+        if practice == 2 or 3 or 4:
+            raise ValidationError(
+                "Oops! That is not the right answer! Please try again. Click 'Instructions' to view rules again."
+            )
+
+# define practice round 3 form
+class Practice3Form(ModelForm):
+    class Meta:
+        model = Practice
+        fields = '__all__'
+
+    def __init__(self, *args, **kwargs):
+        super(Practice3Form, self).__init__(*args, **kwargs)
+        self.fields['answer'].label = ''
+
+        # Crispy forms stuff
+        self.helper = FormHelper()
+        self.helper.form_method = 'post'
+        self.helper.add_input(Submit('submit', 'Submit'))
+
+    # Validation: Make sure that choice 3 is picked
+    def clean(self):
+        cleaned_data = super().clean()
+
+        practice = cleaned_data.get("answer")
+        if practice == 1 or 2 or 4:
+            raise ValidationError(
+                "Oops! That is not the right answer! Please try again. Click 'Instructions' to view rules again."
+            )
+
+# define practice round 4 form
+class Practice4Form(ModelForm):
+    class Meta:
+        model = Practice
+        fields = '__all__'
+
+    def __init__(self, *args, **kwargs):
+        super(Practice4Form, self).__init__(*args, **kwargs)
+        self.fields['answer'].label = ''
+
+        # Crispy forms stuff
+        self.helper = FormHelper()
+        self.helper.form_method = 'post'
+        self.helper.add_input(Submit('submit', 'Submit'))
+
+    # Validation: Make sure that choice 4 is picked
+    def clean(self):
+        cleaned_data = super().clean()
+
+        practice = cleaned_data.get("answer")
+        if practice == 1 or 2 or 3:
+            raise ValidationError(
+                "Oops! That is not the right answer! Please try again. Click 'Instructions' to view rules again."
+            )
+
+# define game round 1 form
+class Observation1Form(ModelForm):
+    class Meta:
+        model = Round
+        fields = '__all__'
+
+    def __init__(self, *args, **kwargs):
+        super(Observation1Form, self).__init__(*args, **kwargs)
+        self.fields['choice'].label = 'Round 1 starts now. Which card would you choose?'
+
+        # Crispy forms stuff
+        self.helper = FormHelper()
+        self.helper.form_method = 'post'
+        self.helper.add_input(Submit('submit', 'Submit'))
+
+# define game round 2 form
+class Observation2Form(ModelForm):
+    class Meta:
+        model = Round
+        fields = '__all__'
+
+    def __init__(self, *args, **kwargs):
+        super(Observation2Form, self).__init__(*args, **kwargs)
+        self.fields['choice'].label = 'Round 2 starts now. Which card would you choose?'
+
+        # Crispy forms stuff
+        self.helper = FormHelper()
+        self.helper.form_method = 'post'
+        self.helper.add_input(Submit('submit', 'Submit'))
+
+# define game round 3 form
+class Observation3Form(ModelForm):
+    class Meta:
+        model = Round
+        fields = '__all__'
+
+    def __init__(self, *args, **kwargs):
+        super(Observation3Form, self).__init__(*args, **kwargs)
+        self.fields['choice'].label = 'Round 3 starts now. Which card would you choose?'
+
+        # Crispy forms stuff
+        self.helper = FormHelper()
+        self.helper.form_method = 'post'
+        self.helper.add_input(Submit('submit', 'Submit'))
+
+# define game round 4 form
+class Observation4Form(ModelForm):
+    class Meta:
+        model = Round
+        fields = '__all__'
+
+    def __init__(self, *args, **kwargs):
+        super(Observation4Form, self).__init__(*args, **kwargs)
+        self.fields['choice'].label = 'Round 4 starts now. Which card would you choose?'
+
+        # Crispy forms stuff
+        self.helper = FormHelper()
+        self.helper.form_method = 'post'
+        self.helper.add_input(Submit('submit', 'Submit'))
+
+
+Practice1ModelFormSet = modelformset_factory(Practice, form=Practice1Form, extra=0, max_num=1)
+Practice2ModelFormSet = modelformset_factory(Practice, form=Practice2Form, extra=0, max_num=1)
+Practice3ModelFormSet = modelformset_factory(Practice, form=Practice3Form, extra=0, max_num=1)
+Practice4ModelFormSet = modelformset_factory(Practice, form=Practice4Form, extra=0, max_num=1)
+
+
+Observation1ModelFormSet = modelformset_factory(Round, form=Observation1Form, extra=0, max_num=1)
+Observation2ModelFormSet = modelformset_factory(Round, form=Observation2Form, extra=0, max_num=1)
+Observation3ModelFormSet = modelformset_factory(Round, form=Observation3Form, extra=0, max_num=1)
+Observation4ModelFormSet = modelformset_factory(Round, form=Observation4Form, extra=0, max_num=1)

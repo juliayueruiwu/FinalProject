@@ -1,0 +1,20 @@
+{% extends 'proj/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block body_content %}
+    <div class="container pt-3">
+        <div class="row justify-content-center">
+            <form action="{% url 'add_practice1' %}" method="POST"> How many coins will you and the other person earn if you picked <span style="color: red">RED</span> and the other person picked <span style="color: blue">BLUE</span>?<br>
+<br/>
+                <div class="col-12">
+                    {% crispy form %}
+{#                    <div class="form-controls row justify-content-center m-3">#}
+{#                        <input type="submit" value="Submit">#}
+{#                    </div>#}
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'proj/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block body_content %}
+    <div class="container pt-3">
+        <div class="row justify-content-center">
+            <form action="{% url 'result1' %}" method="POST">
+                <div class="col-12">
+                    In the last round:
+                    You earned <b>1</b> coin!
+                    The other person earned <b>1</b> coin!
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+{% endblock %}

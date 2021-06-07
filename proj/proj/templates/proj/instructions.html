@@ -1,0 +1,50 @@
+{% extends 'proj/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block body_content %}
+    <div class="container pt-3">
+        <div class="row justify-content-center">
+            <form action="{% url 'instructions' %}" method="POST">
+                <div class="col-12">
+                    In this game, you will be making some choices to earn as many coins as possible.
+                    You will play with another person in real time. Your decision, together with the other person's decision,
+                    will determine how many coins each of you earn by the end of the game.<br>
+<br/>
+
+                    <b>The more coins you earn, the more REAL money you will receive!</b><br>
+<br/>
+
+                    In each round, you will see 2 cards: a <span style="color: red">RED</span> card, and a <span style="color: blue">BLUE</span> card. <br>
+<br/>
+                    You and the other person will be asked to pick one of the cards. You won't know what each other picked until the end of each round.
+                    In this game, 4 things can happen:<br>
+<br/>
+                    1. If you both picked the <span style="color: red">RED</span> card, you will both get <b>1 coin</b>.<br>
+<br/>
+                    2. If you picked the <span style="color: red">RED</span> card, and the other person picked the <span style="color: blue">BLUE</span> card, you will get <b>0 coins</b>, and the
+                    other person will get <b>2 coins</b>.<br>
+<br/>
+                    3. If you picked the <span style="color: blue">BLUE</span> card, and the other person picked the <span style="color: red">RED</span> card, you will get <b>2 coins</b>, and the other
+                    person will get <b>0 coins</b>.<br>
+<br/>
+                    4. If you both picked the <span style="color: blue">BLUE</span> card, you will both get <b>0 coins</b>.<br>
+<br/>
+
+                    Below is a graph the shows you the 4 possible outcomes:<br>
+<br/>
+                    <div class="row justify-content-center">
+                        <img class="img-fluid" src="{% static 'proj/images/Image 1.PNG' %}" width="600" height="800">
+                    </div><br>
+<br/>
+                    We will show you how many coins you and the other person earned after each round. <br>
+<br/>
+                    When you are ready, please click the "Practice Rounds" tab on the top. Once you are done with practicing, move on to the "Game Rounds" to start playing! Good luck!
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+{% endblock %}
